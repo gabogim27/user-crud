@@ -13,5 +13,7 @@ namespace UserCrud.Domain.Repositories
         Task<T> GetByIdAsync(int id);
 
         Task<IEnumerable<T>> GetAllAsync(int skip, int limit, IEnumerable<Expression<Func<T, bool>>> predicates = null);
+
+        Task<bool> ExistAsync(Expression<Func<T, bool>> predicate);
     }
 }

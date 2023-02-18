@@ -4,39 +4,50 @@
     using System.Linq.Expressions;
     using UserCrud.Domain.Entities;
     using UserCrud.Domain.Repositories;
+    using UserCrud.Infrastructure.Database;
     using UserCrud.Infrastructure.Helpers;
 
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<TEntity, TContext> : IRepository<TEntity> 
+        where TEntity : BaseEntity
+        where TContext : DbContext
     {
-        protected readonly DbSet<T> _entities;
+        private readonly TContext _context;
 
-        public Repository(DbSet<T> entity)
+        public Repository(TContext context)
         {
-            _entities = entity;
+            _context = context;
         }
-        public async Task AddAsync(T entity)
+        public async Task AddAsync(TEntity entity)
         {
-            await _entities.AddAsync(entity);
-        }
-
-        public async Task UpdateAsync(T entity)
-        {
-            await Task.Run(() => { _entities.Update(entity); });
+            await _context.Set<TEntity>().AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task UpdateAsync(TEntity entity)
         {
-            await Task.Run(() => { _entities.Remove(entity); });
+            await Task.Run(() => { _context.Set<TEntity>().Attach(entity); });
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(int skip, int limit, IEnumerable<Expression<Func<T, bool>>> predicates = null)
+        public async Task DeleteAsync(TEntity entity)
         {
-            return await _entities.Filter(predicates).Skip(skip).Take(limit).ToListAsync();
+            await Task.Run(() => { _context.Set<TEntity>().Remove(entity); });
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<IEnumerable<TEntity>> GetAllAsync(int skip, int limit, IEnumerable<Expression<Func<TEntity, bool>>> predicates = null)
         {
-            return await _entities.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Set<TEntity>().Filter(predicates).Skip(skip).Take(limit).ToListAsync();
+        }
+
+        public async Task<TEntity> GetByIdAsync(int id)
+        {
+            return await _context.Set<TEntity>().FindAsync(id);
+        }
+
+        public async Task<bool> ExistAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _context.Set<TEntity>().AnyAsync(predicate);
         }
     }
 }

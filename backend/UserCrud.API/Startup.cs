@@ -6,9 +6,12 @@
     using Microsoft.OpenApi.Models;
     using System.Reflection;
     using UserCrud.Application.Services;
+    using UserCrud.Domain.Entities;
+    using UserCrud.Domain.Repositories;
     using UserCrud.Domain.Services;
     using UserCrud.Infrastructure.Database;
-    
+    using UserCrud.Infrastructure.Repositories;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -29,18 +32,16 @@
             services.AddAutoMapper(Assembly.GetExecutingAssembly().GetReferencedAssemblies().Select(Assembly.Load));
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped(typeof(IRepository<User>), typeof(Repository<User, UserContext>));
 
             var client = Configuration.GetSection("ClientHost").Value;
 
-            services.AddCors(options =>
+            services.AddCors(opt =>
             {
-                options.AddPolicy("CorsPolicy",
-                   builder => builder
-                    .WithOrigins(Configuration.GetSection("ClientHost").Value)
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                  );
+                opt.AddPolicy("CorsRule", rule =>
+                {
+                    rule.AllowAnyHeader().AllowAnyMethod().WithOrigins("*");
+                });
             });
 
             services.AddSwaggerGen(c =>

@@ -13,8 +13,6 @@
 
         Task<UserDto> GetUser(int userId);
 
-        Task<IEnumerable<UserDto>> GetUsers();
-
-        Task<IEnumerable<UserDto>> GetUsers(Pagination<UserDto> pagination);
+        Task<IEnumerable<UserDto>> GetUsers(Pagination pagination);
     }
 }

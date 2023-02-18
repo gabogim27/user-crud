@@ -1,7 +1,8 @@
 ﻿namespace UserCrud.Infrastructure.Helpers
 {
+    using Microsoft.EntityFrameworkCore;
     using System.Linq.Expressions;
-    
+
     public static class RepositoryHelper
     {
         public static IQueryable<TEntity> Filter<TEntity>(this IQueryable<TEntity> source, IEnumerable<Expression<Func<TEntity, bool>>> predicates) where TEntity : class
