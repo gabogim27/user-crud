@@ -26,21 +26,21 @@ namespace UserCrud.API.Controllers
         }
 
         [HttpGet("{userId}")]
-        public async Task<ActionResult<UserDto>> Get(int userId)
+        public async Task<ActionResult<UserDto>> GetUserById(int userId)
         {
             var result = await _userService.GetUser(userId);
             return Ok(result);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<UserDto>> Post([FromBody] UserDto userDto)
+        [HttpPost("AddUser")]
+        public async Task<ActionResult<UserDto>> AddUser([FromBody] UserDto userDto)
         {
             var result = await _userService.AddUser(userDto);
             return Ok(result);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] UserDto userDto)
+        public async Task<IActionResult> UpdateUser([FromBody] UserDto userDto)
         {
             await _userService.UpdateUser(userDto);
             return Ok();

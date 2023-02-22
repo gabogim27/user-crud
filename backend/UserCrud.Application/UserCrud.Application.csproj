@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\UserCrud.Domain\UserCrud.Domain.csproj" />
     <ProjectReference Include="..\UserCrud.Infrastructure\UserCrud.Infrastructure.csproj" />
   </ItemGroup>
