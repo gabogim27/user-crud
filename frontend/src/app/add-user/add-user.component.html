@@ -1,1 +1,69 @@
-<p>add-user works!</p>
+<div class="container">
+  <form [formGroup]="userform" autocomplete="off">
+      <div class="mb-1">
+          <label for="name" class="form-label">Name</label>
+          <div class="input-group has-validation">
+              <input type="text" #name [ngClass]="{'form-control': true, 'is-invalid': userform.get('name')?.invalid &&
+              (userform.get('name')?.dirty || userform.get('name')?.touched)}" id="name" name="name"
+                  formControlName="name" placeholder="name">
+              <div class="invalid-feedback">
+                  This field is required.
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+        <label for="lastname" class="form-label">Lastname</label>
+        <div class="input-group has-validation">
+            <input type="text" #name [ngClass]="{'form-control': true}" id="lastname" name="lastname"
+                formControlName="lastname" placeholder="Lastname">
+            <div class="invalid-feedback">
+                This field is required.
+            </div>
+        </div>
+    </div>
+    <div class="mb-1">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group has-validation">
+              <input type="email" [ngClass]="{'form-control': true, 'is-invalid': userform.get('email')?.invalid &&
+                  (userform.get('email')?.dirty || userform.get('email')?.touched)}" id="email" name="email"
+                  formControlName="email" placeholder="xyz@gmail.com">
+              <div class="invalid-feedback">
+                  {{userform.get('email')?.hasError('required') ? 'This field is required.':'Invalid Email'}}
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+        <label for="username" class="form-label">Username</label>
+        <div class="input-group has-validation">
+            <input type="text" #name [ngClass]="{'form-control': true, 'is-invalid': userform.get('username')?.invalid &&
+            (userform.get('username')?.dirty || userform.get('username')?.touched)}" id="username" name="username"
+                formControlName="username" placeholder="Username">
+            <div class="invalid-feedback">
+                This field is required.
+            </div>
+        </div>
+    </div>
+    <div class="mb-1">
+      <label for="role" class="form-label">Role</label>
+      <div class="input-group has-validation">
+          <input type="text" #name [ngClass]="{'form-control': true, 'is-invalid': userform.get('role')?.invalid &&
+          (userform.get('role')?.dirty || userform.get('role')?.touched)}" id="role" name="role"
+              formControlName="role" placeholder="role">
+          <div class="invalid-feedback">
+              This field is required.
+          </div>
+      </div>
+  </div>
+      <div class="mb-1">
+          <div class="btn-group" role="group" aria-label="Basic example">
+              <button (click)="save()" [disabled]="userform.invalid" class="btn btn-primary" type="button">
+                  {{id==0 || id==null ?'Save':'Update'}}</button>
+              <button class="btn btn-secondary" type="button">Reset </button>
+          </div>
+      </div>
+
+      <div class="mb-1">
+          {{userform.value |json}}
+      </div>
+  </form>
+</div>
