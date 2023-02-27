@@ -9,8 +9,11 @@ import { User } from '../model/user';
 })
 export class UserListComponent implements OnInit {
 
+
+  @Input() selectedUser: User | undefined;
+  newUser: User | undefined;
   userList: User[] = [];
-  @Output() onSelected = new EventEmitter<any>();
+  @Output() onSelected = new EventEmitter<User>();
     first = 0;
     rows = 10;
     constructor(
@@ -44,8 +47,11 @@ export class UserListComponent implements OnInit {
   }
 
   get() {
-    this.userService.getUsers().subscribe((data) => {
-      this.userList = data;
+    this.userService.getUsers().subscribe(
+      (data) => {
+        if (data) {
+          this.userList = data;
+        }
     });
   }
 
@@ -56,4 +62,5 @@ export class UserListComponent implements OnInit {
     });
       //this.userService.removeUser(id);
   }
+
 }

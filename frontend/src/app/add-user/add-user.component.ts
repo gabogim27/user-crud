@@ -12,7 +12,8 @@ import { UserService } from '../service/user.service';
 export class AddUserComponent implements OnInit {
   id: number = 0;
   userform: FormGroup;
-  @Input() selectedUser: User | undefined;
+  //@Input() selectedUser: User | undefined;
+  //newUser: User | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,12 +30,10 @@ export class AddUserComponent implements OnInit {
       id: [0, [Validators.required]]
     });
 
-    //change validator and use fluent validation
+    //change validators and use fluent validation
   }
 
-  onSelectedUser(user: User) {
-    this.selectedUser = user;
-  }
+
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -44,14 +43,14 @@ export class AddUserComponent implements OnInit {
         const data = this.userService.getUsersById(this.id).subscribe(() => {
           //if (this.userform.valid) {
             if (data) {
-              //this.onSelectedUser((User)data); this.selectedUser
-              this.userform.setValue({
+              this.userform.setValue(data);//((User)data); //this.selectedUser
+              /*this.userform.setValue({
                 name: this.selectedUser?.name,
                 lastname: this.selectedUser?.lastName,
                 email: this.selectedUser?.email,
                 username: this.selectedUser?.userName,
                 role: this.selectedUser?.role
-              });
+              });*/
             }
           //}
         });
@@ -68,12 +67,14 @@ export class AddUserComponent implements OnInit {
         if (this.userform.valid) {
           console.log("User added");
         }
+
+        this.router.navigate(['/user']);
       });
     } else {
-      this.userService.updateUser(this.userform.value);
+      this.userService.updateUser(this.userform.value).subscribe(() => {
+        console.log('usuario actualizado');
+      });
     }
-
-    this.router.navigate(['/user']);
   }
 
 }
