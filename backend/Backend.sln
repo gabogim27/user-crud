@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCrud.API", "UserCrud.API\UserCrud.API.csproj", "{4167735E-F7E7-4B56-956A-E91BCE1C0DE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCrud.API", "UserCrud.API\UserCrud.API.csproj", "{4167735E-F7E7-4B56-956A-E91BCE1C0DE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCrud.Domain", "UserCrud.Domain\UserCrud.Domain.csproj", "{A4A459D9-2538-4458-9671-F3C74E2F0DA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCrud.Domain", "UserCrud.Domain\UserCrud.Domain.csproj", "{A4A459D9-2538-4458-9671-F3C74E2F0DA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCrud.Infrastructure", "UserCrud.Infrastructure\UserCrud.Infrastructure.csproj", "{0257621F-77C4-4F94-98ED-59277C86E641}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCrud.Infrastructure", "UserCrud.Infrastructure\UserCrud.Infrastructure.csproj", "{0257621F-77C4-4F94-98ED-59277C86E641}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCrud.Application", "UserCrud.Application\UserCrud.Application.csproj", "{FE56000B-27E8-4935-A5A9-B722E14F7F41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCrud.Application", "UserCrud.Application\UserCrud.Application.csproj", "{FE56000B-27E8-4935-A5A9-B722E14F7F41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{962EFF0F-234F-4958-A356-52FACEDB3540}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCrud.API.Tests", "UserCrud.API.Tests\UserCrud.API.Tests.csproj", "{75B22179-EB86-49E8-8AB0-7F10B1499554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCrud.Application.Tests", "UserCrud.Application.Tests\UserCrud.Application.Tests.csproj", "{3CFCFC35-5CD2-4CF0-B294-CC7E8BDDF9F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,21 @@ Global
 		{FE56000B-27E8-4935-A5A9-B722E14F7F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE56000B-27E8-4935-A5A9-B722E14F7F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE56000B-27E8-4935-A5A9-B722E14F7F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75B22179-EB86-49E8-8AB0-7F10B1499554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B22179-EB86-49E8-8AB0-7F10B1499554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B22179-EB86-49E8-8AB0-7F10B1499554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B22179-EB86-49E8-8AB0-7F10B1499554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CFCFC35-5CD2-4CF0-B294-CC7E8BDDF9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CFCFC35-5CD2-4CF0-B294-CC7E8BDDF9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CFCFC35-5CD2-4CF0-B294-CC7E8BDDF9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CFCFC35-5CD2-4CF0-B294-CC7E8BDDF9F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75B22179-EB86-49E8-8AB0-7F10B1499554} = {962EFF0F-234F-4958-A356-52FACEDB3540}
+		{3CFCFC35-5CD2-4CF0-B294-CC7E8BDDF9F9} = {962EFF0F-234F-4958-A356-52FACEDB3540}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F8C868A-32BC-4E69-A5B0-50FE060766F1}

@@ -1,7 +1,6 @@
 ﻿namespace UserCrud.Application.Services
 {
     using AutoMapper;
-    using System.Web.Http;
     using UserCrud.Domain.Common;
     using UserCrud.Domain.DTOs;
     using UserCrud.Domain.Entities;
@@ -20,7 +19,6 @@
             _mapper = mapper;
         }
 
-        [HttpPost]
         public async Task<UserDto> AddUser(UserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
@@ -30,7 +28,6 @@
             return _mapper.Map<UserDto>(user);
         }
 
-        [HttpDelete]
         public async Task<UserDto> DeleteUser(int userId)
         {
             var existsUser = await _userRepository.ExistAsync(x => x.Id == userId);
@@ -44,7 +41,6 @@
             return _mapper.Map<UserDto>(user);
         }
 
-        [HttpGet]
         public async Task<UserDto> GetUser(int userId)
         {
             var existsUser = await _userRepository.ExistAsync(x => x.Id == userId);
@@ -57,7 +53,6 @@
             return _mapper.Map<UserDto>(user);
         }
 
-        [HttpGet]
         public async Task<IEnumerable<UserDto>> GetUsers(Pagination pagination)
         {
             var users = await _userRepository.GetAllAsync(pagination.PageIndex, pagination.PageSize);
@@ -66,7 +61,6 @@
             return usersDto;
         }
 
-        [HttpPut]
         public async Task<UserDto> UpdateUser(UserDto userDto)
         {
             var existsUser = await _userRepository.ExistAsync(x => x.Id == userDto.Id);

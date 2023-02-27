@@ -64,6 +64,8 @@
 
             app.UseCors("CorsRule");
 
+            app.UseMiddleware<UserCrud.API.Middlewares.ExceptionHandler>();
+
             app.UseRouting();
 
             app.UseAuthorization();

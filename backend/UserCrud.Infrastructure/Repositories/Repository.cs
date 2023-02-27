@@ -4,7 +4,6 @@
     using System.Linq.Expressions;
     using UserCrud.Domain.Entities;
     using UserCrud.Domain.Repositories;
-    using UserCrud.Infrastructure.Database;
     using UserCrud.Infrastructure.Helpers;
 
     public class Repository<TEntity, TContext> : IRepository<TEntity> 
