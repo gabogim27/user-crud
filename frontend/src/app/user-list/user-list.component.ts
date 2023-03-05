@@ -57,10 +57,8 @@ export class UserListComponent implements OnInit {
 
   remove(id: number) {
     this.userService.removeUser(id).subscribe(() => {
-      //console.log("User with id " + id + "removed");
       this.get();
     });
-      //this.userService.removeUser(id);
   }
 
 }

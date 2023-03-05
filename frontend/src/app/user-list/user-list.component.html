@@ -14,9 +14,9 @@
       <ng-template pTemplate="body" let-user>
           <tr [ngClass]="{'inActive': user.isActive == false}">
               <td>{{user.name}}</td>
-              <td>{{user.lastName}}</td>
+              <td>{{user.lastname}}</td>
               <td>{{user.email}}</td>
-              <td>{{user.userName}}</td>
+              <td>{{user.username}}</td>
               <td>{{user.role}}</td>
               <td>
                   <a pButton pRipple type="button" (click)="onSelectedUser(user)" [routerLink]="['/update-user',user.id]" icon="pi pi-user-edit"
