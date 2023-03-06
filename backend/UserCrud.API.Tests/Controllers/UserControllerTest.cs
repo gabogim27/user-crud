@@ -14,15 +14,13 @@ namespace UserCrud.API.Tests.Controllers
     public class UserControllerTest
     {
         private Mock<IUserService> mockUserService;
-        private Mock<ILogger<UserController>> mockLogger;
         private UserController controller;
 
         [SetUp]
         public void SetUp()
         {
             mockUserService = new Mock<IUserService>();
-            mockLogger = new Mock<ILogger<UserController>>();
-            controller = new UserController(mockLogger.Object, mockUserService.Object);
+            controller = new UserController(mockUserService.Object);
         }
 
         [Test]
@@ -35,8 +33,8 @@ namespace UserCrud.API.Tests.Controllers
                     Id = 1,
                     Email = "Test@email.com",
                     Name = "Test",
-                    LastName = "Test LastName",
-                    UserName = "Test",
+                    Lastname = "Test LastName",
+                    Username = "Test",
                     Role = "Admin"
                 },
                 new UserDto
@@ -44,8 +42,8 @@ namespace UserCrud.API.Tests.Controllers
                     Id = 2,
                     Email = "Test2@email.com",
                     Name = "Test2",
-                    LastName = "Test2 LastName",
-                    UserName = "Test2",
+                    Lastname = "Test2 LastName",
+                    Username = "Test2",
                     Role = "Admin2"
                 }
             };
@@ -69,8 +67,8 @@ namespace UserCrud.API.Tests.Controllers
                 Id = 1,
                 Email = "Test@email.com",
                 Name = "Test",
-                LastName = "Test LastName",
-                UserName = "Test",
+                Lastname = "Test LastName",
+                Username = "Test",
                 Role = "Admin"
             };
             mockUserService.Setup(x => x.GetUser(It.IsAny<int>()))
@@ -93,8 +91,8 @@ namespace UserCrud.API.Tests.Controllers
                 Id = 1,
                 Email = "Test@email.com",
                 Name = "Test",
-                LastName = "Test LastName",
-                UserName = "Test",
+                Lastname = "Test LastName",
+                Username = "Test",
                 Role = "Admin"
             };
             mockUserService.Setup(x => x.GetUser(It.IsAny<int>()))
@@ -115,8 +113,8 @@ namespace UserCrud.API.Tests.Controllers
                 Id = 1,
                 Email = "Test@email.com",
                 Name = "Test",
-                LastName = "Test LastName",
-                UserName = "Test",
+                Lastname = "Test LastName",
+                Username = "Test",
                 Role = "Admin"
             };
             mockUserService.Setup(x => x.AddUser(It.IsAny<UserDto>()))
@@ -127,8 +125,8 @@ namespace UserCrud.API.Tests.Controllers
                 Id = 1,
                 Email = "Test@email.com",
                 Name = "Test",
-                LastName = "Test LastName",
-                UserName = "Test",
+                Lastname = "Test LastName",
+                Username = "Test",
                 Role = "Admin"
             });
             var responseCasted = (((ObjectResult)response.Result.Result)).Value as UserDto;
@@ -146,8 +144,8 @@ namespace UserCrud.API.Tests.Controllers
                 Id = 1,
                 Email = "Test@email.com",
                 Name = "Test",
-                LastName = "Test LastName",
-                UserName = "Test",
+                Lastname = "Test LastName",
+                Username = "Test",
                 Role = "Admin"
             };
             mockUserService.Setup(x => x.UpdateUser(It.IsAny<UserDto>()))
@@ -169,8 +167,8 @@ namespace UserCrud.API.Tests.Controllers
                 Id = 1,
                 Email = "Test@email.com",
                 Name = "Test",
-                LastName = "Test LastName",
-                UserName = "Test",
+                Lastname = "Test LastName",
+                Username = "Test",
                 Role = "Admin"
             };
             mockUserService.Setup(x => x.DeleteUser(It.IsAny<int>()))

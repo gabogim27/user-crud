@@ -91,9 +91,9 @@
             return new User
             {
                 Id = 1,
-                LastName = "test",
+                Lastname = "test",
                 Role = "Admin",
-                UserName = "tester",
+                Username = "tester",
                 Name = "test",
                 Email = "test@hotmail.com"
             };
@@ -104,9 +104,9 @@
             return new UserDto
             {
                 Id = 1,
-                LastName = "test",
+                Lastname = "test",
                 Role = "Admin",
-                UserName = "tester",
+                Username = "tester",
                 Name = "test",
                 Email = "test@hotmail.com"
             };

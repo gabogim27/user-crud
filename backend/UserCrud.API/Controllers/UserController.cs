@@ -10,11 +10,9 @@ namespace UserCrud.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly ILogger<UserController> _logger;
-
-        public UserController(ILogger<UserController> logger, IUserService userService)
+        
+        public UserController(IUserService userService)
         {
-            _logger = logger;
             _userService = userService;
         }
 
@@ -39,7 +37,7 @@ namespace UserCrud.API.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPut("UpdateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] UserDto userDto)
         {
             await _userService.UpdateUser(userDto);
